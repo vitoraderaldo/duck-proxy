@@ -56,20 +56,22 @@ export default function Header() {
   const History = () => {
     if (!records.length) {
       return (
-        <p>You have not searched yet</p>
+        <p className="text-center text-gray-500 mt-4">You have not searched yet</p>
       )
     }
     
-    return records.map((query) => {
+    return records.map((query, index) => {
       return (
         <Link 
+          id={`history-item-${index}`}
           key={query.query}
           href={Paths.searchPage(query)}
           onClick={changeVisibility}
+          className="block"
         >
-          <div className="flex flew-row w-full justify-between border-t-1 items-center p-2 ">
-            <h4 className="max-w-64 overflow-hidden overflow-ellipsis text-sm text-blue-500">{query.query}</h4>
-            <h5 className="text-xs text-black text-opacity-75">{isoDateToHumanDate(query.isoDate)}</h5>
+          <div className="bg-white bg-opacity-50 shadow-md my-1 flex flex-row w-full justify-between items-center p-3 hover:bg-gray-100">
+            <h4 className="max-w-xs overflow-hidden overflow-ellipsis whitespace-nowrap text-sm font-medium text-blue-600">{query.query}</h4>
+            <h5 className="text-xs text-gray-600">{isoDateToHumanDate(query.isoDate)}</h5>
           </div>
         </Link>
       );
@@ -78,14 +80,14 @@ export default function Header() {
 
 
   return (
-    <div className="border-b-1 py-4 flex flex-row justify-between items-center gap-x-12 px-3">
+    <header className="border-b-1 py-4 flex flex-row justify-between items-center gap-x-12 px-3">
       <div className="flex gap-x-12">
         <Link className="hover:underline text-black text-md" href="/">Home</Link>
-        <Button className="bg-transparent hover:underline text-black text-md" onClick={changeVisibility}>History</Button>
+        <Button id="history" className="bg-transparent hover:underline text-black text-md" onClick={changeVisibility}>History</Button>
       </div>     
       <Suspense><SearchInput /></Suspense>
 
-      <div className={`z-50 absolute max-w-md bg-gray-100 inset-0 border ${historyVisibility} overflow-scroll`}>
+      <div id="history-modal" className={`z-50 absolute max-w-md bg-gray-100 inset-0 border ${historyVisibility} overflow-scroll`}>
         <div className="flex flex-col p-3">
           <div className="flex flex-row mb-3">
             <h3 className="text-lg w-full text-center">History</h3>
@@ -102,6 +104,6 @@ export default function Header() {
         </div>
       </div>
 
-    </div>
+    </header>
   )
 }

@@ -12,36 +12,36 @@ export default async function SearchResult(props: {
   locale: string
 }) {
 
-  const result = await search(props);
+  const searchResults = await search(props);
 
-  if (result.errors) {
-    const errorMessage = generateErrorMessage(result.errors[0].code);
+  if (searchResults.errors) {
+    const errorMessage = generateErrorMessage(searchResults.errors[0].code);
 
     return (
-      <div>
-        <h3>Something went wrong!</h3>
-        <h3>{errorMessage}</h3>
+      <div className="text-center mt-8">
+        <h3 className="text-red-500 text-xl font-bold">Something went wrong!</h3>
+        <p className="text-gray-700">{errorMessage}</p>
       </div>
     )
   }
 
-  let totalHighlighted = 0;
+  let totalHighlightedCount = 0;
 
-  const highlightedResults = result.results.map((result) => {
+  const highlightedResults = searchResults.results.map((result) => {
     const highlightedDescription = HighLighter.highlight(props.query, result.description);
 
-    totalHighlighted = totalHighlighted + highlightedDescription.totalHighLighted;
+    totalHighlightedCount = totalHighlightedCount + highlightedDescription.totalHighLighted;
 
     return {
       ...result,
-      description: <Highlighter key={result.url} tokens={highlightedDescription.tokens} />,
+      highlightedDescription: <Highlighter key={result.url} tokens={highlightedDescription.tokens} />,
     }
   })
 
   const TotalHighlighted = () => {
     return (
-      <div>
-        <h3 className="text-md">Spotted {totalHighlighted} mentions on page {props.page} </h3>
+      <div id="highlighted-count">
+        <h3 className="text-md">Spotted {totalHighlightedCount} mentions on page {props.page}</h3>
       </div>
     )
   }
@@ -51,7 +51,11 @@ export default async function SearchResult(props: {
   const SearchResult = () => {
     return highlightedResults.map((result, index) => {
       return (
-        <div key={index} className="flex flex-col">
+        <div 
+          id={`result-${index}`}
+          key={index}
+          className="flex flex-col p-4 rounded-lg shadow-md mb-2"
+        >
           
           <Link href={result.url} target="_blank">
             <div className="flex flex-row items-center gap-x-3">
@@ -59,10 +63,10 @@ export default async function SearchResult(props: {
               <span className="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap">{result.url}</span>
             </div>
 
-            <h3 className="text-md text-blue-600">{result?.title}</h3>
+            <h3 className="text-md font-semibold text-gray-800">{result?.title}</h3>
           </Link>
-          <p className="text-sm text-">
-            {result?.description}
+          <p className="text-sm text-gray-600">
+            {result?.highlightedDescription}
           </p>
   
         </div>

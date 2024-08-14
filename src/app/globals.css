@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 .highlight {
-  font-weight: 500;
-  background-color: #FFFF00;
+  font-weight: 600;
+  background-color: #FFF9C4; /* Softer yellow */
+  padding: 2px 4px;
+  border-radius: 4px;
 }
 
 .h-full-minus-header {
-  height: calc(100dvh - 73px);
+  height: calc(100dvh - 90px);
 }

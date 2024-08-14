@@ -17,9 +17,10 @@ export default function SearchInput() {
   }, [])
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full p-2">
       <form action={redirectToSearchPageViaForm} className="w-full flex gap-x-4">
         <Input 
+          id="search"
           name="query"
           placeholder="What do you want to search?"
           defaultValue={query || ''}
@@ -28,7 +29,11 @@ export default function SearchInput() {
           name="locale"
           value={locale}
         />    
-        <Button type="submit">Search</Button>
+        <Button 
+          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+          type="submit"
+          id="search-button"
+        >Search</Button>
       </form>
     </div>
   )

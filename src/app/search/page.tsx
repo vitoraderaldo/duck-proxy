@@ -34,7 +34,7 @@ export default async function SearchPage(props: {
         </Suspense> 
       </div>
       
-      <div className="flex justify-center py-4 border-t-1">
+      <div id="pagination-buttons" className="flex justify-center py-4 border-t-1">
         <SearchPagination 
           key={`query=${query}&page=${page}`}
           total={20} 
