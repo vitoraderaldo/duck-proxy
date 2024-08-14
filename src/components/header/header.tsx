@@ -64,7 +64,7 @@ export default function Header() {
       return (
         <Link 
           id={`history-item-${index}`}
-          key={query.query}
+          key={index}
           href={Paths.searchPage(query)}
           onClick={changeVisibility}
           className="block"

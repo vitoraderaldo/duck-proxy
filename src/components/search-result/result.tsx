@@ -4,7 +4,7 @@ import Link from "next/link";
 import { generateErrorMessage } from "@/util/error-mapping";
 import StoreHistory from "@/components/search-result/store-history";
 import { HighLighter } from "@/util/highlighter/highlighters";
-import { Highlighter } from "@/util/highlighter/jsx-highlighter";
+import { Highlighter as HighlighterComponent } from "@/components/highlighter";
 
 export default async function SearchResult(props: {
   query: string;
@@ -34,7 +34,7 @@ export default async function SearchResult(props: {
 
     return {
       ...result,
-      highlightedDescription: <Highlighter key={result.url} tokens={highlightedDescription.tokens} />,
+      highlightedDescription: <HighlighterComponent key={result.url} tokens={highlightedDescription.tokens} />,
     }
   })
 

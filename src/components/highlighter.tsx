@@ -7,7 +7,7 @@ export function Highlighter(props: {
   }[]  
 }) {
   return (
-    <div>
+    <>
       {props.tokens.map((token, index) =>
         token.shouldHighlight ? (
           <span className="highlight" key={index}>{token.word}</span>
@@ -17,6 +17,6 @@ export function Highlighter(props: {
           </Fragment>
         )
       )}
-    </div>
+    </>
   );
 }

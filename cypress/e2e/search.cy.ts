@@ -2,6 +2,8 @@ describe('Search', () => {
   const baseUrl = 'http://localhost:3000';
 
   const performSearch = (searchFor: string) => {
+    cy.wait(10000);
+
     cy.visit(baseUrl);
     cy.get('input[id="search"]').type(searchFor);
     cy.get('button[id="search-button"]').click();
@@ -11,6 +13,8 @@ describe('Search', () => {
   };
 
   const navigateToPage = (pageNumber: number) => {
+    cy.wait(10000);
+
     cy.get(`div[id="pagination-buttons"] li[aria-label="pagination item ${pageNumber}"]`)
     .should('contain', pageNumber)
     .click();
@@ -71,12 +75,15 @@ describe('Search', () => {
 
     const item = cy
       .get(`div[id="history-modal"]`)
-      .get(`a[id="history-item-${index}"]`);
+      .find(`a[id="history-item-${index}"]`);
 
     item.should('have.attr', 'href', `/search?query=${search}&page=1&locale=en-US`);
 
-    // item.get('h4').contains(search);
-    // item.get('h5').contains(new Date().getUTCDate());
+    item.find('h4').contains(search);
+
+    item.click();
+
+    cy.url().should('include', `/search?query=${search}&page=1&locale=en-US`);
   }
 
 
@@ -92,19 +99,12 @@ describe('Search', () => {
     verifySearchResults('javascript', 2);
   });
 
-  it.only('should search using the history', async () => {
-    performSearch('first'); // [2]
-    cy.wait(10000);
-
-    performSearch('second'); // [1]
-    cy.wait(5000);
-
-    performSearch('third'); // [0]
-    cy.wait(5000);
-
+  it('should search using the history', () => {
+    performSearch('javascript'); // [1]
+    performSearch('nodejs'); // [0]
     navigateToPage(4);
-
-    navigateToHistory('first', 2);
+    
+    navigateToHistory('javascript', 1);
   })
 
 

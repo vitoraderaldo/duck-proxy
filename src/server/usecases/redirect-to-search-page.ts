@@ -4,8 +4,8 @@ import { Paths } from "@/paths";
 
 interface RedirectUserInputDto {
   query: string;
-  page: number;
-  locale: string;
+  page?: number;
+  locale?: string;
 }
 
 export class RedirectToSearchPageUseCase {

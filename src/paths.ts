@@ -5,8 +5,8 @@ export class Paths {
 
   static searchPage(params: {
     query: string,
-    page: number,
-    locale: string,
+    page?: number,
+    locale?: string,
   }) {
     const page = params.page || 1;
     const locale = params.locale || 'en-US'
