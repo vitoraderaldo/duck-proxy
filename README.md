@@ -23,7 +23,7 @@ Duck Proxy is a simple search engine proxy built using Next.js, designed to inte
 
 ### Prerequisites
 
-- **Node.js** (v14 or higher)
+- **Node.js** (v20.16.0 or higher)
 - **npm** or **yarn**
 
 ### Installation
