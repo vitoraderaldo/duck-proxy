@@ -18,6 +18,7 @@ jobs:
           heroku_app_name: "duck-proxy"  
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
+          stack: "container"
           docker_build_args: |
             NODE_ENV
             SECRET_KEY
