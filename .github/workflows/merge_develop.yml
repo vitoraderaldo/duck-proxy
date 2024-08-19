@@ -19,8 +19,3 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
           stack: "container"
-          docker_build_args: |
-            NODE_ENV
-            SECRET_KEY
-        env:
-          NODE_ENV: production
