@@ -34,5 +34,5 @@ jobs:
         with:
           context: Dockerfile.production
           push: true
-          tags: vitor96k/duck-proxy:latest vitor96k/duck-proxy:${{ steps.vars.outputs.tag_name }} 
+          tags: vitor96k/duck-proxy:latest,vitor96k/duck-proxy:${{ steps.vars.outputs.tag_name }} 
           platforms: linux/amd64,linux/arm64
