@@ -27,7 +27,7 @@ jobs:
       run: npm run lint
 
     - name: Run Unit Tests
-      run: npm run test:unit:cov
+      run: npm run test:unit
 
     - name: Start App
       run: npm run start & sleep 3

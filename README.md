@@ -1,6 +1,6 @@
 # Duck Proxy Search Engine
 
-Duck Proxy is a simple search engine proxy built using Next.js, designed to interface with the DuckDuckGo API. This project provides a seamless way to search the web while preserving user privacy, offering a user interface with search history functionality.
+Duck Proxy is a simple search engine proxy built using Next.js, designed to interface with the DuckDuckGo API. This project provides a way to search the web, offering a user interface with search history functionality.
 
 ## Features
 
@@ -23,7 +23,7 @@ Duck Proxy is a simple search engine proxy built using Next.js, designed to inte
 
 ### Prerequisites
 
-- **Node.js** (v14 or higher)
+- **Node.js** (v20.16.0 or higher)
 - **npm** or **yarn**
 
 ### Installation
