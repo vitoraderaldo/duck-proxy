@@ -1,0 +1,14 @@
+.clj-kondo
+.lsp
+.next
+.scannerwork
+.swc
+
+coverage
+cypress
+node_modules
+jest.config.ts
+
+.env
+.gitignore
+cypress.config.ts

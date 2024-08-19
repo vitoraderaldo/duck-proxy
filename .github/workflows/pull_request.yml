@@ -1,0 +1,36 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Node v20.16.0
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20.16.0
+
+    - name: Install Dependencies
+      run: npm ci
+    
+    - name: Build app
+      run: npm run build
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Run Unit Tests
+      run: npm run test:unit:cov
+
+    - name: Start App
+      run: npm run start & sleep 3
+
+    - name: Run E2E Tests
+      run: npm run test:e2e
