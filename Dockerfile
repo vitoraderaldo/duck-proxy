@@ -19,7 +19,6 @@ WORKDIR /app
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
-USER nextjs
 
 RUN mkdir .next
 RUN chown nextjs:nodejs .next
@@ -33,5 +32,7 @@ ENV HOSTNAME "0.0.0.0"
 ENV NODE_ENV production
 
 EXPOSE 3000
+
+USER nextjs
 
 CMD ["node", "server.js"]
