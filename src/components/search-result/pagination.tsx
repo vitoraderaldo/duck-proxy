@@ -18,10 +18,12 @@ export default function SearchPagination({
 } : PaginationProps) {
 
   return (
-    <Pagination 
-      total={total} 
-      initialPage={page} 
-      onChange={(newPage) => redirectToSearchPage({ query, page: newPage, locale })}
-    />
+    <div className="flex justify-center">
+      <Pagination 
+        total={total} 
+        initialPage={page} 
+        onChange={(newPage) => redirectToSearchPage({ query, page: newPage, locale })}
+      />
+    </div>
   );
 }

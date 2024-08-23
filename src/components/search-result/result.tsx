@@ -54,7 +54,7 @@ export default async function SearchResult(props: {
         <div 
           id={`result-${index}`}
           key={index}
-          className="flex flex-col p-4 rounded-lg shadow-md mb-2"
+          className="flex flex-col p-4 rounded-lg shadow-md mb-2 sm:flex-row"
         >
           
           <Link href={result.url} target="_blank">
@@ -75,7 +75,7 @@ export default async function SearchResult(props: {
   }
 
   return (
-    <div className="py-3 ml-5 flex flex-col gap-5 max-w-3xl">
+    <div className="py-3 ml-5 flex flex-col gap-5 max-w-3xl sm:ml-0">
       <StoreHistory {...props} />
       <TotalHighlighted />
       <SearchResult />

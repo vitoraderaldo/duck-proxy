@@ -17,7 +17,7 @@ export default function SearchInput() {
   }, [])
 
   return (
-    <div className="flex w-full p-2">
+    <div className="flex w-full p-2 flex-col sm:flex-row">
       <form action={redirectToSearchPageViaForm} className="w-full flex gap-x-4">
         <Input 
           id="search"

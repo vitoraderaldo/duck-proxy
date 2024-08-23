@@ -80,7 +80,7 @@ export default function Header() {
 
 
   return (
-    <header className="border-b-1 py-4 flex flex-row justify-between items-center gap-x-12 px-3">
+    <header className="border-b-1 py-4 flex flex-col sm:flex-row justify-between items-center gap-x-12 px-3">
       <div className="flex gap-x-12">
         <Link className="hover:underline text-black text-md" href="/">Home</Link>
         <Button id="history" className="bg-transparent hover:underline text-black text-md" onClick={changeVisibility}>History</Button>
