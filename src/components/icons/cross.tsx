@@ -1,8 +1,9 @@
-export default function Cross(props: {
-  height: number,
-  width: number
-}) {
-  const { width, height } = props
+interface CrossProps {
+  height: number;
+  width: number;
+}
+
+export default function Cross({ width, height }: CrossProps) {
   return (
     <svg 
       width={width}
